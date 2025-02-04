@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi enamorada?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            background: #f7f7f7; /* Fondo de respaldo */
+            font-family: 'Dancing Script', cursive;
+            color: white;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('girasoles.jpg'); /* Imagen local de girasoles */
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        h1 {
+            font-size: 60px;
+            font-weight: bold;
+            text-shadow: 3px 3px 5px black;
+            animation: brillo 2s infinite alternate;
+        }
+        @keyframes brillo {
+            0% { color: #ffcc00; }
+            100% { color: #ff69b4; }
+        }
+        .botones button {
+            font-size: 25px;
+            padding: 15px 30px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .botones button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+        .yes {
+            background-color: #ffcc00;
+        }
+        .no {
+            background-color: #ff4444;
+        }
+        h2 {
+            font-size: 30px;
+            text-shadow: 2px 2px 4px black;
+        }
+        .corazones, .girasoles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .corazones span, .girasoles span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+            animation: animar 5s linear infinite;
+        }
+        .corazones span {
+            background: url('corazones.png') no-repeat; /* Corazones locales en PNG */
+            background-size: contain; /* Asegura que la imagen se ajuste */
+        }
+        .girasoles span {
+            background: url('girasol.png') no-repeat; /* Girasoles locales en PNG */
+            background-size: contain; /* Asegura que la imagen se ajuste */
+            width: 50px;
+            height: 50px;
+        }
+        @keyframes animar {
+            0% {
+                transform: translateY(-10%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script>
+        function respuesta(opcion) {
+            if (opcion === 'si') {
+                const audio = new Audio('https://www.soundjay.com/button/button-1.mp3'); // Sonido romántico
+                audio.play();
+                document.body.innerHTML = `
+                    <div class="background"></div>
+                    <div class="container">
+                        <h1>¡Gracias por aceptar! 💖</h1>
+                        <h2>Desde el momento en que te vi, supe que eras especial. Hoy, al aceptar ser mi enamorada, has llenado mi corazón de una felicidad infinita.</h2>
+                        <h2>Prometo amarte, cuidarte y respetarte todos los días de mi vida. Juntos, construiremos un amor tan grande como este campo de girasoles.</h2>
+                        <h2>¿Quieres reafirmar tu respuesta y comenzar esta hermosa aventura juntos?</h2>
+                        <button class='yes' onclick='respuestaFinal("si")'>Sí, con todo mi corazón</button>
+                        <button class='no' onclick='respuestaFinal("no")'>No, necesito pensarlo más</button>
+                        <button class='yes' onclick='location.reload()'>Volver al inicio</button>
+                    </div>
+                `;
+            } else {
+                document.body.innerHTML = `
+                    <div class="background"></div>
+                    <div class="container">
+                        <h1>Lo siento, pero esta no es una opción elegible 😜</h1>
+                        <h2>El destino nos ha unido, y sé que en el fondo de tu corazón quieres decir que sí. Intenta con la otra opción o vuelve en 100 años...</h2>
+                        <button class='yes' onclick='location.reload()'>Volver al inicio</button>
+                    </div>
+                `;
+            }
+        }
+        function respuestaFinal(opcion) {
+            if (opcion === 'si') {
+                document.body.innerHTML = `
+                    <div class="background"></div>
+                    <div class="container">
+                        <h1>¡Usted ha aceptado estar en una relación con Carlos Eduardo Camacho Valencia! ❤️</h1>
+                        <h2>Este es el comienzo de una historia llena de amor, risas y momentos inolvidables. Prometo ser tu compañero, tu confidente y tu mejor amigo.</h2>
+                        <h2>Que nuestro amor florezca como estos girasoles, siempre mirando hacia el sol y creciendo juntos cada día.</h2>
+                        <button class='yes' onclick='location.reload()'>Volver al inicio</button>
+                    </div>
+                `;
+            } else {
+                document.body.innerHTML = `
+                    <div class="background"></div>
+                    <div class="container">
+                        <h1>Piensa bien, Yupanqui... tú sí quieres 😏</h1>
+                        <h2>El amor que siento por ti es tan grande como este campo de girasoles. No dejes que esta oportunidad se escape.</h2>
+                        <button class='yes' onclick='respuestaFinal("si")'>Vamos, marca la otra opción</button>
+                        <button class='yes' onclick='location.reload()'>Volver al inicio</button>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="corazones">
+        <!-- Corazones flotantes -->
+        <span style="left: 5%; animation-delay: 0s;"></span>
+        <span style="left: 15%; animation-delay: 2s;"></span>
+        <span style="left: 25%; animation-delay: 4s;"></span>
+        <span style="left: 35%; animation-delay: 6s;"></span>
+        <span style="left: 45%; animation-delay: 8s;"></span>
+        <span style="left: 55%; animation-delay: 10s;"></span>
+        <span style="left: 65%; animation-delay: 12s;"></span>
+        <span style="left: 75%; animation-delay: 14s;"></span>
+        <span style="left: 85%; animation-delay: 16s;"></span>
+        <span style="left: 95%; animation-delay: 18s;"></span>
+    </div>
+    <div class="girasoles">
+        <!-- Girasoles flotantes -->
+        <span style="left: 10%; animation-delay: 1s;"></span>
+        <span style="left: 20%; animation-delay: 3s;"></span>
+        <span style="left: 30%; animation-delay: 5s;"></span>
+        <span style="left: 40%; animation-delay: 7s;"></span>
+        <span style="left: 50%; animation-delay: 9s;"></span>
+        <span style="left: 60%; animation-delay: 11s;"></span>
+        <span style="left: 70%; animation-delay: 13s;"></span>
+        <span style="left: 80%; animation-delay: 15s;"></span>
+        <span style="left: 90%; animation-delay: 17s;"></span>
+        <span style="left: 100%; animation-delay: 19s;"></span>
+    </div>
+    <div class="container">
+        <h1>¿Quieres ser mi enamorada?</h1>
+        <h2>Desde el momento en que te conocí, supe que eras alguien especial. Hoy, con el corazón en la mano, te pregunto: ¿quieres ser mi compañera en esta aventura llamada vida?</h2>
+        <div class="botones">
+            <button class="yes" onclick="respuesta('si')">Sí, acepto con todo mi corazón</button>
+            <button class="no" onclick="respuesta('no')">No, no estoy segura</button>
+        </div>
+    </div>
+</body>
+</html>
